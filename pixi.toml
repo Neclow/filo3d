@@ -12,6 +12,7 @@ annotate = "python -m pipeline.download.annotate params.yaml data/metadata/raw.c
 download = "python -m pipeline.download.download_data params.yaml data/metadata/aug.csv data/cif data/metadata/clean.csv"
 extract_aa = "python -m pipeline.preprocessing.extract_aa params.yaml data/metadata/clean.csv data/aa/fa/filo3d.fa"
 search_similar = "python -m pipeline.download.search_similar params.yaml data/metadata/raw.csv data/metadata/candidates.csv"
+summarize = "python -m pipeline.postprocessing.summarize params.yaml data/metadata/clean.csv --out tables/summary.md"
 
 [dependencies]
 # Pipeline / data acquisition
