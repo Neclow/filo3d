@@ -14,6 +14,9 @@ extract_aa = "python -m pipeline.preprocessing.extract_aa params.yaml data/metad
 search_similar = "python -m pipeline.download.search_similar params.yaml data/metadata/raw.csv data/metadata/candidates.csv"
 summarize = "python -m pipeline.postprocessing.summarize params.yaml data/metadata/clean.csv --out tables/summary.md"
 build_site = "python -m pipeline.postprocessing.build_site params.yaml data/metadata/clean.csv docs/data.json"
+docs_build = "mkdocs build"
+docs_serve = "mkdocs serve"
+docs_deploy = "mkdocs gh-deploy --force"
 
 [dependencies]
 # Pipeline / data acquisition
@@ -25,3 +28,4 @@ biopython = ">=1.85,<2"
 biotite = ">=1.4,<2"
 pyyaml = ">=6.0,<7"
 dvc = ">=3.63,<4"
+mkdocs-material = ">=9.5,<10"

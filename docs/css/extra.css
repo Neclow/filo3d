@@ -1,0 +1,57 @@
+/* Stat tiles ------------------------------------------------------------- */
+.filo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 1.2rem 0 1.4rem;
+}
+.filo-stat {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-width: 110px;
+}
+.filo-stat b {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--md-primary-fg-color);
+}
+.filo-stat span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--md-default-fg-color--light);
+}
+.filo-error { color: #b3261e; font-weight: 600; }
+.filo-foot { color: var(--md-default-fg-color--light); font-size: 0.85rem; margin-top: 1rem; }
+
+/* Let the table use the full content width on wide screens */
+.md-grid { max-width: 68rem; }
+
+/* Grid.js: inherit Material fonts, tidy spacing --------------------------- */
+.gridjs-wrapper, .gridjs-table { font-family: var(--md-text-font-family, Roboto), sans-serif; }
+.gridjs-search { margin-bottom: 0.6rem; }
+.gridjs-search-input { width: 260px; max-width: 100%; }
+table.gridjs-table td a { color: var(--md-primary-fg-color); font-weight: 600; }
+
+/* Dark (slate) scheme: make Grid.js readable instead of a light block ----- */
+[data-md-color-scheme="slate"] .gridjs-wrapper,
+[data-md-color-scheme="slate"] .gridjs-container,
+[data-md-color-scheme="slate"] .gridjs-footer,
+[data-md-color-scheme="slate"] .gridjs-head { background: transparent; }
+[data-md-color-scheme="slate"] .gridjs-th,
+[data-md-color-scheme="slate"] .gridjs-td {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color--lightest);
+}
+[data-md-color-scheme="slate"] .gridjs-th { background: var(--md-code-bg-color); }
+[data-md-color-scheme="slate"] .gridjs-search-input,
+[data-md-color-scheme="slate"] .gridjs-pagination .gridjs-pages button {
+  background: var(--md-code-bg-color);
+  color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color--lightest);
+}
+[data-md-color-scheme="slate"] .gridjs-pagination { color: var(--md-default-fg-color--light); }

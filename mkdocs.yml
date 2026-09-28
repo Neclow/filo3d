@@ -1,0 +1,49 @@
+site_name: Filo3D
+site_description: A searchable database of high-resolution Filoviridae protein structures
+site_url: https://neclow.github.io/filo3d/
+repo_url: https://github.com/Neclow/filo3d
+repo_name: Neclow/filo3d
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - content.code.copy
+    - navigation.top
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/gridjs@6.2.0/dist/theme/mermaid.min.css
+  - css/extra.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/gridjs@6.2.0/dist/gridjs.umd.js
+  - js/table.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+
+nav:
+  - Browse: index.md
+  - Data & methods: methods.md
