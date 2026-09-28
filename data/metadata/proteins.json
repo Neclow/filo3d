@@ -1,0 +1,20 @@
+{
+  "_comment": "Ordered rules mapping RCSB polymer-entity descriptions to canonical filovirus proteins. First matching rule wins; keywords are lowercased substring matches. Non-filovirus partners (antibodies, receptors) are tagged separately via 'partners'.",
+  "_matching": "Keywords are matched as whole tokens (regex word boundaries), so short tokens like 'np'/'gp'/'l protein' match 'NP', 'Shed GP', 'the L protein' without hitting substrings of longer words.",
+  "proteins": [
+    {"name": "VP35", "aka": "Polymerase cofactor / type-I IFN antagonist", "keywords": ["vp35", "polymerase cofactor"]},
+    {"name": "VP40", "aka": "Matrix protein", "keywords": ["vp40", "matrix protein"]},
+    {"name": "VP30", "aka": "Transcription activator", "keywords": ["vp30", "transcription activator", "transcriptional activator", "minor nucleoprotein"]},
+    {"name": "VP24", "aka": "Membrane-associated / IFN antagonist", "keywords": ["vp24"]},
+    {"name": "NP", "aka": "Nucleoprotein", "keywords": ["nucleoprotein", "nucleocapsid protein", "np", "np1", "np2"]},
+    {"name": "GP", "aka": "Envelope glycoprotein (GP1,2 / sGP / ssGP)", "keywords": ["glycoprotein", "gp", "gp1", "gp2", "sgp", "ssgp", "spike glycoprotein", "secreted glycoprotein", "shed gp"]},
+    {"name": "L", "aka": "RNA-directed RNA polymerase (large protein)", "keywords": ["rna-directed rna polymerase", "rna-dependent rna polymerase", "large protein", "l protein", "protein l", "polymerase l"]}
+  ],
+  "partners": [
+    {"name": "antibody", "keywords": ["antibody", "fab", "immunoglobulin", "heavy chain", "light chain", "nanobody", "vhh", "scfv", "single-domain antibody", "monoclonal", "igg"]},
+    {"name": "NPC1", "keywords": ["npc1", "niemann-pick c1", "niemann pick c1"]},
+    {"name": "TIM-1", "keywords": ["tim-1", "tim1", "hepatitis a virus cellular receptor", "havcr1"]},
+    {"name": "cathepsin", "keywords": ["cathepsin"]},
+    {"name": "integrin", "keywords": ["integrin"]}
+  ]
+}

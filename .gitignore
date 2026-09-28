@@ -1,0 +1,20 @@
+# Pixi environment
+.pixi/
+
+# Python
+__pycache__/
+*.pyc
+
+# Copyrighted source PDFs — do not distribute
+papers/
+
+# Structure files: 215 MB, reproducible via `pixi run download`
+data/cif/
+
+# Raw RCSB dump (superseded by the annotated aug.csv) + working review queue
+data/metadata/raw.csv
+data/metadata/candidates.csv
+
+# DVC run cache
+/.dvc/cache
+/.dvc/tmp

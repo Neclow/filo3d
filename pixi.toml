@@ -1,0 +1,25 @@
+[workspace]
+authors = ["Neil Clow <neil.clow@sund.ku.dk>"]
+channels = ["conda-forge", "bioconda"]
+name = "filo3d"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+repro = "dvc repro"
+search = "python -m pipeline.download.search_rcsb params.yaml data/metadata/raw.csv"
+annotate = "python -m pipeline.download.annotate params.yaml data/metadata/raw.csv data/metadata/aug.csv"
+download = "python -m pipeline.download.download_data params.yaml data/metadata/aug.csv data/cif data/metadata/clean.csv"
+extract_aa = "python -m pipeline.preprocessing.extract_aa params.yaml data/metadata/clean.csv data/aa/fa/filo3d.fa"
+search_similar = "python -m pipeline.download.search_similar params.yaml data/metadata/raw.csv data/metadata/candidates.csv"
+
+[dependencies]
+# Pipeline / data acquisition
+python = ">=3.12,<3.13"
+pandas = ">=2.3,<3"
+requests = ">=2.32,<3"
+tqdm = ">=4.67,<5"
+biopython = ">=1.85,<2"
+biotite = ">=1.4,<2"
+pyyaml = ">=6.0,<7"
+dvc = ">=3.63,<4"

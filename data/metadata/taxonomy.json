@@ -1,0 +1,32 @@
+{
+  "_comment": "Filovirus taxonomy for species/virus assignment. 'by_taxid' is matched first on the NCBI taxonomy id of the source organism; 'by_name' is an ordered case-insensitive substring fallback on the scientific name (more robust to NCBI id changes). Codes follow ICTV/common abbreviations. See carroll2013 for the taxonomy backbone.",
+  "by_taxid": {
+    "128952": {"code": "EBOV", "virus": "Ebola virus",        "species": "Zaire ebolavirus",      "genus": "Ebolavirus"},
+    "186538": {"code": "EBOV", "virus": "Ebola virus",        "species": "Zaire ebolavirus",      "genus": "Ebolavirus"},
+    "186540": {"code": "SUDV", "virus": "Sudan virus",        "species": "Sudan ebolavirus",      "genus": "Ebolavirus"},
+    "186539": {"code": "RESTV","virus": "Reston virus",       "species": "Reston ebolavirus",     "genus": "Ebolavirus"},
+    "186541": {"code": "TAFV", "virus": "Tai Forest virus",   "species": "Tai Forest ebolavirus", "genus": "Ebolavirus"},
+    "565995": {"code": "BDBV", "virus": "Bundibugyo virus",   "species": "Bundibugyo ebolavirus", "genus": "Ebolavirus"},
+    "2010960":{"code": "BOMV", "virus": "Bombali virus",      "species": "Bombali ebolavirus",    "genus": "Ebolavirus"},
+    "33727":  {"code": "MARV", "virus": "Marburg virus",      "species": "Marburg marburgvirus",  "genus": "Marburgvirus"},
+    "378809": {"code": "RAVV", "virus": "Ravn virus",         "species": "Marburg marburgvirus",  "genus": "Marburgvirus"},
+    "11269":  {"code": "MARV", "virus": "Marburg virus",      "species": "Marburg marburgvirus",  "genus": "Marburgvirus"},
+    "1513237":{"code": "LLOV", "virus": "Lloviu virus",       "species": "Lloviu cuevavirus",     "genus": "Cuevavirus"},
+    "2010961":{"code": "MLAV", "virus": "Mengla virus",       "species": "Mengla dianlovirus",    "genus": "Dianlovirus"}
+  },
+  "by_name": [
+    {"match": "ravn",            "code": "RAVV", "virus": "Ravn virus",       "species": "Marburg marburgvirus",  "genus": "Marburgvirus"},
+    {"match": "marburg",         "code": "MARV", "virus": "Marburg virus",    "species": "Marburg marburgvirus",  "genus": "Marburgvirus"},
+    {"match": "bundibugyo",      "code": "BDBV", "virus": "Bundibugyo virus", "species": "Bundibugyo ebolavirus", "genus": "Ebolavirus"},
+    {"match": "sudan",           "code": "SUDV", "virus": "Sudan virus",      "species": "Sudan ebolavirus",      "genus": "Ebolavirus"},
+    {"match": "reston",          "code": "RESTV","virus": "Reston virus",     "species": "Reston ebolavirus",     "genus": "Ebolavirus"},
+    {"match": "tai forest",      "code": "TAFV", "virus": "Tai Forest virus", "species": "Tai Forest ebolavirus", "genus": "Ebolavirus"},
+    {"match": "taï forest", "code": "TAFV", "virus": "Tai Forest virus", "species": "Tai Forest ebolavirus", "genus": "Ebolavirus"},
+    {"match": "cote d'ivoire",   "code": "TAFV", "virus": "Tai Forest virus", "species": "Tai Forest ebolavirus", "genus": "Ebolavirus"},
+    {"match": "bombali",         "code": "BOMV", "virus": "Bombali virus",    "species": "Bombali ebolavirus",    "genus": "Ebolavirus"},
+    {"match": "lloviu",          "code": "LLOV", "virus": "Lloviu virus",     "species": "Lloviu cuevavirus",     "genus": "Cuevavirus"},
+    {"match": "mengla",          "code": "MLAV", "virus": "Mengla virus",     "species": "Mengla dianlovirus",    "genus": "Dianlovirus"},
+    {"match": "zaire",           "code": "EBOV", "virus": "Ebola virus",      "species": "Zaire ebolavirus",      "genus": "Ebolavirus"},
+    {"match": "ebola",           "code": "EBOV", "virus": "Ebola virus",      "species": "Zaire ebolavirus",      "genus": "Ebolavirus"}
+  ]
+}

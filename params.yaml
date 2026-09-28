@@ -1,0 +1,45 @@
+# Shared paths and parameters — read by DVC, Python (yaml.safe_load), and R (yaml::read_yaml).
+# Filo3D: a CoV3D-style structural database for Filoviridae.
+
+dirs:
+  root: data
+  metadata: data/metadata
+  cif: data/cif
+  aa: data/aa/fa
+
+# General
+threads: 16
+seed: 42
+
+# --- RCSB search (seed the structure set) ---------------------------------
+# Filoviridae = NCBI taxonomy id 11266. The search matches any polymer entity
+# whose source-organism lineage contains this taxon, so it captures every genus
+# and species below it (Ebolavirus, Marburgvirus, Cuevavirus/Lloviu, ...).
+search:
+  taxonomy_id: "11266"          # Filoviridae
+  return_type: polymer_entity   # one hit per protein chain-group
+  # experimental structures only (exclude computed/AlphaFold models by default)
+  content_types:
+    - experimental
+  # GraphQL Data-API batching
+  batch_size: 200
+
+# Reference maps (protein + species classification) live in data/metadata/
+reference:
+  proteins: data/metadata/proteins.json
+  taxonomy: data/metadata/taxonomy.json
+
+# --- Similarity backstop (completeness check) -----------------------------
+# Sequence-similarity search against curated, tag-free filovirus reference
+# sequences (one per protein), to catch structures the taxonomy query misses
+# (mis-annotated source organism, synthetic constructs, antibody-antigen
+# depositions, designed immunogens). Hits NOT already in the taxonomy set are
+# written to a review queue (candidates.csv) rather than auto-added.
+similar:
+  references: data/metadata/references.fa
+  identity_cutoff: 0.5    # RCSB sequence service (mmseqs2), fraction
+  evalue_cutoff: 0.1
+  min_ref_coverage: 0.3   # drop hits aligning <this fraction of the reference (tag-only matches)
+
+# --- Quality metrics ------------------------------------------------------
+# wwPDB validation percentiles are fetched per entry during download.

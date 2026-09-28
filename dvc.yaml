@@ -1,0 +1,69 @@
+stages:
+  search:
+    cmd: python -m pipeline.download.search_rcsb params.yaml ${dirs.metadata}/raw.csv
+    desc: Search RCSB for filovirus polymer entities (taxid 11266) and fetch metadata
+    deps:
+      - pipeline/download/search_rcsb.py
+    params:
+      - search
+    outs:
+      - ${dirs.metadata}/raw.csv:
+          cache: false
+
+  annotate:
+    cmd: >-
+      python -m pipeline.download.annotate params.yaml
+      ${dirs.metadata}/raw.csv ${dirs.metadata}/aug.csv
+    desc: Classify entities into canonical filovirus proteins + species; flag complexes
+    deps:
+      - pipeline/download/annotate.py
+      - ${dirs.metadata}/raw.csv
+      - ${reference.proteins}
+      - ${reference.taxonomy}
+    outs:
+      - ${dirs.metadata}/aug.csv:
+          cache: false
+
+  download:
+    cmd: >-
+      python -m pipeline.download.download_data params.yaml
+      ${dirs.metadata}/aug.csv ${dirs.cif} ${dirs.metadata}/clean.csv
+    desc: Download CIF structures and attach wwPDB validation quality metrics
+    deps:
+      - pipeline/download/download_data.py
+      - ${dirs.metadata}/aug.csv
+    params:
+      - threads
+    outs:
+      - ${dirs.cif}
+      - ${dirs.metadata}/clean.csv:
+          cache: false
+
+  extract_aa:
+    cmd: >-
+      python -m pipeline.preprocessing.extract_aa params.yaml
+      ${dirs.metadata}/clean.csv ${dirs.aa}/filo3d.fa
+    desc: Write per-entity amino-acid FASTA for the filovirus protein set
+    deps:
+      - pipeline/preprocessing/extract_aa.py
+      - ${dirs.metadata}/clean.csv
+    outs:
+      - ${dirs.aa}/filo3d.fa:
+          cache: false
+
+  search_similar:
+    cmd: >-
+      python -m pipeline.download.search_similar params.yaml
+      ${dirs.metadata}/raw.csv ${dirs.metadata}/candidates.csv
+    desc: Sequence-similarity completeness backstop; emit review queue of hits missed by taxonomy
+    deps:
+      - pipeline/download/search_similar.py
+      - ${dirs.metadata}/raw.csv
+      - ${similar.references}
+      - ${reference.proteins}
+      - ${reference.taxonomy}
+    params:
+      - similar
+    outs:
+      - ${dirs.metadata}/candidates.csv:
+          cache: false
